@@ -17,8 +17,7 @@ builds:
     ldflags:
       - "-s -w -X main.version={{ .Version }}"
 archives:
-  -
-    format: tar.gz
+  - format: tar.gz
     name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}"
     files:
       - licence*
@@ -36,7 +35,7 @@ checksum:
 dockers:
   - goos: linux
     goarch: "386"
-    binaries: 
+    ids:
       - sampctl
     dockerfile: Dockerfile
     image_templates:
@@ -45,8 +44,7 @@ dockers:
       - "southclaws/sampctl:v{{ .Major }}.{{ .Minor }}"
       - "southclaws/sampctl:latest"
 nfpms:
-  -
-    vendor: Southclaws
+  - vendor: Southclaws
     homepage: https://github.com/Southclaws/sampctl
     maintainer: Southclaws <hello@southcla.ws>
     description: The Swiss Army Knife of SA:MP - vital tools for any server owner or library maintainer.
@@ -55,8 +53,7 @@ nfpms:
       - deb
       - rpm
 brews:
-  -
-    tap:
+  - tap:
       owner: Southclaws
       name: homebrew-sampctl
     homepage: https://github.com/Southclaws/sampctl
